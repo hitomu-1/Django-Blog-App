@@ -1,0 +1,6 @@
+/* categoryクラスが付与されているdivタグの下のulの下のliの下にあるすべてのaタグ */
+
+div.category > ul > li a{
+    color: #212529;
+    text-decoration: none;
+}
