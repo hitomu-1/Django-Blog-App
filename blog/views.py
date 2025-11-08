@@ -8,6 +8,7 @@ from django.views.generic import (
     DeleteView,
 )
 from django.urls import reverse_lazy, reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from blog.models import Post, Category, Tag, Comment, Reply
 from blog.forms import CommentForm, ReplyForm
@@ -169,7 +170,7 @@ class ReplyCreateView(CreateView):
         return context
 
 
-class CommentDeleteView(DeleteView):
+class CommentDeleteView(LoginRequiredMixin, DeleteView):
     model = Comment
     template_name = "blog/comment_delete.html"
     # success_url = reverse_lazy("post-detail")
@@ -179,7 +180,7 @@ class CommentDeleteView(DeleteView):
         return reverse("post-detail", kwargs={"pk": self.object.post.pk})
 
 
-class ReplyDeleteView(DeleteView):
+class ReplyDeleteView(LoginRequiredMixin, DeleteView):
     model = Reply
     template_name = "blog/comment_delete.html"
     # success_url = reverse_lazy("post-detail")
