@@ -4,3 +4,8 @@ div.category > ul > li a{
     color: #212529;
     text-decoration: none;
 }
+
+
+img {
+    object-fit: cover;
+}

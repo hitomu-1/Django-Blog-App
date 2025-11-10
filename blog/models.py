@@ -1,5 +1,8 @@
 from django.db import models
 
+from markdownx.models import MarkdownxField
+from markdownx.utils import markdownify
+
 
 class Category(models.Model):
     name = models.CharField(verbose_name="カテゴリー", max_length=255)
@@ -27,7 +30,8 @@ class Tag(models.Model):
 
 class Post(models.Model):
     title = models.CharField(verbose_name="タイトル", max_length=200)
-    content = models.TextField(verbose_name="内容")
+    # content = models.TextField(verbose_name="本文")
+    content = MarkdownxField(verbose_name="本文")
     image = models.ImageField(
         verbose_name="画像", upload_to="uploads/", null=True, blank=True
     )
@@ -44,6 +48,10 @@ class Post(models.Model):
     )
 
     tag = models.ManyToManyField(Tag, verbose_name="タグ", blank=True)
+
+    # 入力されたmarkdownのテキストをhtmlに変換
+    def convert_markdown_to_html(self):
+        return markdownify(self.content)
 
     def __str__(self):
         return self.title

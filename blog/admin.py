@@ -1,10 +1,11 @@
 from django.contrib import admin
+from markdownx.admin import MarkdownxModelAdmin
 
 from blog.models import Post, Category, Tag, Comment, Reply
 
 
 # 管理画面の表示方法を変更
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(MarkdownxModelAdmin, admin.ModelAdmin):
     # 記事の表示方法を変更したい
     list_display = ("title", "category", "created_at", "updated_at", "is_published")
     # 管理画面で検索できるようにする
