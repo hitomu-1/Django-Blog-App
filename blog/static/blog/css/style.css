@@ -9,3 +9,8 @@ div.category > ul > li a{
 img {
     object-fit: cover;
 }
+
+.comment-form label{
+    color: #dc143c;
+    font-weight: 600;
+}
