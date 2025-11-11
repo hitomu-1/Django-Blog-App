@@ -3,8 +3,17 @@ from markdownx.admin import MarkdownxModelAdmin
 
 from blog.models import Post, Category, Tag, Comment, Reply
 
-
 # 管理画面の表示方法を変更
+
+
+class ReplyInline(admin.StackedInline):
+    model = Reply
+
+
+class CommentAdmin(admin.ModelAdmin):
+    inlines = [ReplyInline]
+
+
 class PostAdmin(MarkdownxModelAdmin, admin.ModelAdmin):
     # 記事の表示方法を変更したい
     list_display = ("title", "category", "created_at", "updated_at", "is_published")
@@ -17,5 +26,5 @@ class PostAdmin(MarkdownxModelAdmin, admin.ModelAdmin):
 admin.site.register(Post, PostAdmin)
 admin.site.register(Category)
 admin.site.register(Tag)
-admin.site.register(Comment)
+admin.site.register(Comment, CommentAdmin)
 admin.site.register(Reply)
