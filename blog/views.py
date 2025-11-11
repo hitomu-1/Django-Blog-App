@@ -14,10 +14,14 @@ from blog.models import Post, Category, Tag, Comment, Reply
 from blog.forms import CommentForm, ReplyForm
 
 
+posts_per_page = 5
+
+
 class PostListView(ListView):
     model = Post
     template_name = "blog/post_list.html"
-    # paginate_by = 1
+    # 1ページごとに表示するブログの数
+    paginate_by = posts_per_page
 
     def get_queryset(self):
         posts = super().get_queryset()
@@ -41,7 +45,7 @@ class PostDetailView(DetailView):
 class CategoryPostListView(ListView):
     model = Post
     template_name = "blog/post_list.html"
-    paginate_by = 1
+    paginate_by = posts_per_page
 
     def get_queryset(self):
         # トップページでアクセスのあったカテゴリーのURLを変数slugに代入
@@ -62,7 +66,7 @@ class TagPostListView(ListView):
     model = Post
     template_name = "blog/post_list.html"
     context_object_name = "posts"
-    paginate_by = 1
+    paginate_by = posts_per_page
 
     def get_queryset(self):
         # トップページでアクセスのあったタグのURLを変数slugに代入
@@ -81,7 +85,7 @@ class SearchPostListView(ListView):
     model = Post
     template_name = "blog/post_list.html"
     context_object_name = "posts"
-    paginate_by = 1
+    paginate_by = posts_per_page
 
     def get_queryset(self):
         # getメソッドで送られてきたクエリパラメータの値を取得する

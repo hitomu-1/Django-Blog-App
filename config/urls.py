@@ -20,8 +20,12 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-urlpatterns = [path("admin/", admin.site.urls), path("", include("blog.urls"))]
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("", include("blog.urls")),
+    path("markdownx/", include("markdownx.urls")),
+]
 
-# 画像を扱うのであればこのように扱うと定型文として覚える
+# 画像を扱う際の定型文として覚える
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
