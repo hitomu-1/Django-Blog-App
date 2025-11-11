@@ -9,16 +9,20 @@ class CommentForm(forms.ModelForm):
         fields = ["name", "text"]
         widgets = {
             "name": forms.TextInput(
-                attrs={"placeholder": "名前", "class": "form-control"}
+                attrs={
+                    "placeholder": "名前",
+                    "class": "form-control",
+                    "id": "name",
+                }
             ),
             "text": forms.Textarea(
                 attrs={
                     "placeholder": "コメントを入力してください",
                     "class": "form-control",
+                    "id": "text",
                 }
             ),
         }
-        labels = {"name": "※必須", "text": "※必須"}
 
 
 class ReplyForm(forms.ModelForm):
@@ -27,10 +31,17 @@ class ReplyForm(forms.ModelForm):
         fields = ["name", "text"]
         widgets = {
             "name": forms.TextInput(
-                attrs={"placeholder": "名前", "class": "form-control"}
+                attrs={
+                    "placeholder": "名前",
+                    "class": "form-control",
+                    "id": "name",
+                }
             ),
             "text": forms.Textarea(
-                attrs={"placeholder": "返信を入力してください", "class": "form-control"}
+                attrs={
+                    "placeholder": "返信を入力してください",
+                    "class": "form-control",
+                    "id": "text",
+                }
             ),
         }
-        labels = {"name": "※必須", "text": "※必須"}

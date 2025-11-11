@@ -17,8 +17,11 @@
         {% endif %}
         <form class="comment-form" method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">送信</button>
+            <label for="name" class="form-label mt-3 fw-bold">名前 <span class="badge bg-danger">必須</span></label>
+            {{ form.name }}
+            <label for="text" class="form-label mt-3 fw-bold">内容 <span class="badge bg-danger">必須</span></label>
+            {{ form.text }}
+            <button type="submit" class="btn btn-primary mt-3">送信</button>
         </form>
     </div>
     <div class="col-3">

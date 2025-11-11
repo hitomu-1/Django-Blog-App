@@ -1,6 +1,6 @@
 /* categoryクラスが付与されているdivタグの下のulの下のliの下にあるすべてのaタグ */
 
-div.category > ul > li a{
+a {
     color: #212529;
     text-decoration: none;
 }
@@ -8,9 +8,4 @@ div.category > ul > li a{
 
 img {
     object-fit: cover;
-}
-
-.comment-form label{
-    color: #dc143c;
-    font-weight: 600;
 }
