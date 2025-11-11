@@ -55,11 +55,11 @@
             </div>
             {% endif %}
             {% endfor %}
-            {% if post %}
+            {% comment %} {% if posts %} {% endcomment %}
             <div class="text-center">
                 {% include "blog/snippets/pagination.html" %}
             </div>
-            {% endif %}
+            {% comment %} {% endif %} {% endcomment %}
 
         </div>
 
